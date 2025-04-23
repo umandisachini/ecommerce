@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  nav {
+    background-color: #333;
+    padding: 10px;
+  }
+  nav a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Item</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav style="background-color: #333; padding: 10px;">
+  <a href="index.html" style="color: white; margin-right: 10px;">Home</a>
+  <a href="insert-item.html" style="color: white; margin-right: 10px;">Insert Item</a>
+  <a href="update-item.html" style="color: white; margin-right: 10px;">Update Item</a>
+  <a href="delete-item.html" style="color: white; margin-right: 10px;">Delete Item</a>
+  <a href="buy-item.html" style="color: white;">Buy Item</a>
+</nav>
+
+<div style="padding: 20px;">
+  <!-- Your page content goes here -->
+</div>
+
+    <h1>Update Item</h1>
+    <form id="updateForm">
+        <input type="text" id="itemId" placeholder="Item ID to update" required>
+        <input type="text" id="newItemName" placeholder="New Item Name">
+        <input type="text" id="newItemPrice" placeholder="New Item Price">
+        <input type="text" id="newItemDescription" placeholder="New Item Description">
+        <button type="button" onclick="updateItem()">Update Item</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>

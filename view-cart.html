@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Cart</title>
+    <style>
+        .cart-item {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .cart-item img {
+            height: 80px;
+        }
+        .cart-details {
+            flex-grow: 1;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div id="cartContainer"></div>
+    <div class="total" id="totalPrice"></div>
+
+    <script>
+         function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const container = document.getElementById('cartContainer');
+            const totalPriceElement = document.getElementById('totalPrice');
+            container.innerHTML = "";
+
+            let total = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = "<p>Your cart is empty.</p>";
+                totalPriceElement.textContent = "";
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                // Ensure price is a valid number and handle invalid cases
+                const price = parseFloat(item.price);
+                if (isNaN(price)) {
+                    console.error('Invalid price value:', item.price);
+                    return; // Skip invalid item
+                }
+
+                const itemTotal = price * (item.quantity || 1); // Default quantity to 1 if not specified
+                total += itemTotal;
+
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.name}">
+                    <div class="cart-details">
+                        <h3>${item.name}</h3>
+                        <p>Price: €${price.toFixed(2)}</p>
+                        <p>Quantity: ${item.quantity || 1}</p>
+                        <p>Total: €${itemTotal.toFixed(2)}</p>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            totalPriceElement.textContent = "Total: €" + total.toFixed(2);
+        }
+
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        // Initial display
+        displayCart();
+    </script>
+</body>
+</html>

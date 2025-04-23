@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  nav {
+    background-color: #333;
+    padding: 10px;
+  }
+  nav a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Item</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+	<nav style="background-color: #333; padding: 10px;">
+  <a href="index.html" style="color: white; margin-right: 10px;">Home</a>
+  <a href="insert-item.html" style="color: white; margin-right: 10px;">Insert Item</a>
+  <a href="update-item.html" style="color: white; margin-right: 10px;">Update Item</a>
+  <a href="delete-item.html" style="color: white; margin-right: 10px;">Delete Item</a>
+  <a href="buy-item.html" style="color: white;">Buy Item</a>
+</nav>
+
+<div style="padding: 20px;">
+  <!-- Your page content goes here -->
+</div>
+
+    <h1>Delete Item</h1>
+    <form id="deleteForm">
+        <input type="text" id="deleteItemId" placeholder="Item ID to delete" required>
+        <button type="button" onclick="deleteItem()">Delete Item</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
